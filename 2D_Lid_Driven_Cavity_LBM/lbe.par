@@ -1,0 +1,38 @@
+c       parameter ( nx=49,ny =49,npop = 9, jint=(ny+1)/2)
+        parameter ( nx=96,ny =96,npop = 9, jint=(ny+1)/2)
+
+C    "0" leg for (0,0)
+C    "1" leg" for (1,0)
+C    "2" leg" for (0,1)
+C    "3" leg" for (-1,0)
+C    "4" leg" for (,-1)
+C    "5" leg" for (1,1)
+C    "6" leg" for (-1,1)
+C    "7" leg" for (-1,-1)
+C    "8" leg" for (1,-1)
+C
+	character*5 fileout
+	logical iforce,iobst
+
+	common /constants/ cs2,cs22,cssq,omega,fpois,den,visc,
+     .                     rho0,rt0,rt1,rt2,ulip,WL,gratio
+        common /constants2/ visc2,omega2,omega0
+        common /phys/   u0,uf,fom
+	common /arrays/ u(0:nx+1,0:ny+1),v(0:nx+1,0:ny+1),
+     .                  rho(0:nx+1,0:ny+1),
+     .                  feq(0:npop-1,0:nx+1,0:ny+1),
+     .                  f(0:npop-1,0:nx+1,0:ny+1),
+     .           gg(0:npop-1,0:nx+1,0:ny+1)
+C Use structured nonuniform mesh
+C the grid locations are defined by xx(1:nx),yy(1:ny)
+C spacing by dx(1:nx+1),dy(1:ny+1)
+        common /cdir/ icx(0:npop-1),icy(0:npop-1)
+
+        common /amatrix/fam(1:npop-1,1:nx,1:ny,9)
+
+        common /grid/ xx(1:nx),yy(1:ny),dx(1:nx+1),dy(1:ny+1)
+	
+	common /count/ nout,ndiag,nsteps,nobst,time
+	common /ile/ fileout
+	common /logic/ iforce,iobst
+	

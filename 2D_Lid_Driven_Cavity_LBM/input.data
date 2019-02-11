@@ -1,0 +1,14 @@
+  Number of steps
+20000
+  Number of steps between printing profile
+2000
+  Number of steps between performing diagnostics
+10
+  Initial density
+1.0
+ Lip moving speed
+0.01
+  Reynolds number
+10.0
+  File for output: 5 chars
+run01
